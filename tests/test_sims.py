@@ -41,3 +41,5 @@ def test_quitter(monkeypatch, capsys):
         ("tests/zilcher.sim"),
     ],
 )
+def test_all(test_input):
+    pass
