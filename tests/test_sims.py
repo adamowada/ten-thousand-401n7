@@ -22,6 +22,7 @@ def test_quitter(monkeypatch, capsys):
         return inputs.pop(0)
 
     monkeypatch.setattr("builtins.input", mock_input)
+    print('hello')
     play()
     captured = capsys.readouterr()
     # print(captured)
