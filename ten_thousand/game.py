@@ -90,4 +90,5 @@ def do_zilch():
 
 if __name__ == "__main__":
     test_straight = GameLogic([(1, 2, 3, 4, 5, 4)])
-    play(test_straight.mock_roller)
+    # play(test_straight.mock_roller)
+    play()
