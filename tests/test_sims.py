@@ -4,11 +4,6 @@ from ten_thousand.game import play
 
 
 def get_inputs(lines):
-    """
-    Get the sim file's inputs
-    :param lines: List of lines from sim text's .readlines().
-    :return: List of inputs to mock.
-    """
     inputs = []
     for line in lines:
         if line.startswith("> "):
@@ -17,8 +12,9 @@ def get_inputs(lines):
 
 
 def test_quitter(monkeypatch, capsys):
-    with open("tests/quitter.sim.txt", "r") as f:
-        lines = [line.strip() for line in f.read()]
+    with open("tests/quitter.sim.txt", "r") as file:
+        lines = [line.strip() for line in file]
+        print(lines)
         inputs = get_inputs(lines)
 
     def mock_input(prompt):
