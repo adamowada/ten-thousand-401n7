@@ -13,7 +13,7 @@ def get_inputs(lines):
     for line in lines:
         if line.startswith("> "):
             print(line)
-            inputs.append(line[2:])  # use slice syntax to remove "> " from input
+            inputs.append(line[2:].strip())  # use slice syntax to remove "> " and "\n" from input
     return inputs
 
 
