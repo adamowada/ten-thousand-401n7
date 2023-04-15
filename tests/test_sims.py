@@ -3,20 +3,29 @@ from ten_thousand.game_logic import GameLogic
 from ten_thousand.game import play
 
 
-def get_inputs(lines):
-    inputs = []
+def extract_elements(lines, prefix, transform=lambda x: x):
+    elements = []
     for line in lines:
-        if line.startswith("> "):
-            inputs.append(line[2:].strip())  # use slice syntax to remove "> " and "\n" from input
-    return inputs
+        if line.startswith(prefix):
+            element = line[len(prefix):].strip()
+            elements.append(transform(element))
+    return elements
+
+
+def get_inputs(lines):
+    return extract_elements(lines, "> ")
 
 
 def get_mock_rolls(lines):
-    mock_rolls = []
-    for line in lines:
-        if line.startswith("*** "):
-            mock_rolls.append(tuple(int(num) for num in line if num.isnumeric()))
-    return mock_rolls
+    return extract_elements(lines, "*** ", lambda x: tuple(int(num) for num in x if num.isnumeric()))
+
+
+def compare_output_and_expected(captured_output, lines):
+    captured_output = captured_output.replace("\n\n", "\n").split("\n")
+
+    for actual_line, expected_line in zip(captured_output, lines):
+        assert actual_line.strip() == expected_line.strip()
+
 
 
 @pytest.mark.parametrize(
@@ -39,16 +48,14 @@ def test_all(monkeypatch, capsys, test_input):
         mock_rolls = get_mock_rolls(lines)
 
     def mock_input(prompt):
-        print(prompt, inputs[0], sep="")
-        return inputs.pop(0)
+        response = inputs.pop(0)
+        print(prompt, response, sep="")
+        return response
 
-    # override input()
     monkeypatch.setattr("builtins.input", mock_input)
 
     test_instance = GameLogic(mock_rolls)
     play(test_instance.mock_roller)
 
-    captured = capsys.readouterr().out.replace("\n\n", "\n")  # jank
-    output_lines = captured.split("\n")
-    for i, v in enumerate(lines):
-        assert v.strip() == output_lines[i]
+    captured_output = capsys.readouterr().out
+    compare_output_and_expected(captured_output, lines)
