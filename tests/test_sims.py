@@ -27,13 +27,8 @@ def test_quitter(monkeypatch, capsys):
 
     monkeypatch.setattr("builtins.input", mock_input)
     play()
-    captured = capsys.readouterr().out
-    print(captured)
-    # print()
-    captured = captured.replace("\n\n", "\n")  # jank
+    captured = capsys.readouterr().out.replace("\n\n", "\n")  # jank
     output_lines = captured.strip().split("\n")
-    print(output_lines)
-    # print()
-    # print(lines)
-    # assert len(output_lines) == len(lines)
+    for i in enumerate(output_lines):
+        assert i == enumerate(lines)
 
