@@ -29,6 +29,7 @@ def test_quitter(monkeypatch, capsys):
     play()
     captured = capsys.readouterr().out.replace("\n\n", "\n").strip().replace("\n", "\n@")  # jank
     output_lines = captured.split("@")
+    print(output_lines)
     for i, v in enumerate(output_lines):
         assert v == lines[i]
 
