@@ -1,6 +1,6 @@
 try:
     from ten_thousand.game_logic import GameLogic
-except:
+except ModuleNotFoundError:
     from game_logic import GameLogic
 
 
