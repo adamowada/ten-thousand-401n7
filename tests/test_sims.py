@@ -31,7 +31,7 @@ def test_quitter(monkeypatch, capsys):
     print(captured)
     # print()
     captured = captured.replace("\n\n", "\n")  # jank
-    output_lines = captured.out.strip().split("\n")
+    output_lines = captured.strip().split("\n")
     print(output_lines)
     # print()
     # print(lines)
