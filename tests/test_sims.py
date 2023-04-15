@@ -18,9 +18,8 @@ def get_inputs(lines):
 
 def test_quitter(monkeypatch, capsys):
     with open("tests/quitter.sim.txt", "r") as f:
-        lines = f.readlines()
+        lines = f.read()
         inputs = get_inputs(lines)
-        raw = f.read()
 
     def mock_input(prompt):
         print(prompt, inputs[0], sep="")
@@ -36,5 +35,5 @@ def test_quitter(monkeypatch, capsys):
     # print()
     # print(lines)
     # assert len(output_lines) == len(lines)
-    print(captured.out)
-    print(raw)
+    print("co", captured.out)
+    print("raw", lines)
