@@ -68,7 +68,7 @@ def do_keepers(roll):  # add roll parameter
             break  # new
         print("Cheater!!! Or possibly made a typo...")  # new
         print_dice(roll)  # new
-    return keepers
+    return keepers  # function-level scoping
 
 
 def do_hot_dice():
