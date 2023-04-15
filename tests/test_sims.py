@@ -22,7 +22,7 @@ def test_quitter(monkeypatch, capsys):
         inputs = get_inputs(lines)
 
     def mock_input(prompt):
-        print(prompt)
+        print(prompt, inputs[0], sep="")
         return inputs.pop(0)
 
     monkeypatch.setattr("builtins.input", mock_input)
