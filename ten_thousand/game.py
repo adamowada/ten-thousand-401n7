@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 try:
     from ten_thousand.game_logic import GameLogic
 except ModuleNotFoundError:
@@ -11,6 +12,12 @@ def play(roller=GameLogic.roll_dice):  # new param
     instance's .mock_roller method.
     :return:
     """
+=======
+from ten_thousand.game_logic import GameLogic
+
+
+def play(roller=GameLogic.roll_dice):
+>>>>>>> main
     print("Welcome to Ten Thousand")
     print("(y)es to play or (n)o to decline")
     welcome = input("> ")
@@ -39,18 +46,32 @@ def do_round(round_number, roller):
         roll = roller(dice_remaining)
         print(f"Rolling {dice_remaining} dice...")
         print_dice(roll)
+<<<<<<< HEAD
         # do zilch! # 2nd new
         if GameLogic.calculate_score(roll) == 0:   # new
             do_zilch()  # new
             return 0  # new
         keepers = do_keepers(roll)  # 3rd new add roll argument
+=======
+        # do zilch!
+        if GameLogic.calculate_score(roll) == 0:
+            do_zilch()
+            return 0
+        keepers = do_keepers(roll)  # new argument/param
+>>>>>>> main
         if keepers == "q":
             return "q"
         unbanked_points += GameLogic.calculate_score(keepers)
         dice_remaining -= len(keepers)
+<<<<<<< HEAD
         # do hot dice! 1st
         if dice_remaining == 0:  # new
             dice_remaining = 6  # new (or could do in function)
+=======
+        # do hot dice!
+        if dice_remaining == 0:
+            dice_remaining = 6
+>>>>>>> main
         rbq = do_rbq(unbanked_points, dice_remaining)
         if rbq == "b":
             return unbanked_points
@@ -66,16 +87,24 @@ def do_rbq(unbanked_points, dice_remaining):
 
 
 def print_dice(dice):
+    # print("***", *dice, "***")
     print(f"*** {' '.join([str(i) for i in dice])} ***")
 
 
+<<<<<<< HEAD
 def do_keepers(roll):  # add roll parameter
     """Asks user if they want to keep dice, or quit. Returns choice"""
     while True:  # new
+=======
+def do_keepers(roll):
+    """Asks user if they want to keep dice, or quit, validates input. Returns choice"""
+    while True:
+>>>>>>> main
         print("Enter dice to keep, or (q)uit:")
         keepers = input("> ")
         if keepers == "q":
             return "q"
+<<<<<<< HEAD
         keepers = tuple(int(num) for num in keepers if num.isnumeric())
         # verify the keepers! are the cheating?
         cheating = GameLogic.is_cheating(roll, keepers)  # new
@@ -84,10 +113,27 @@ def do_keepers(roll):  # add roll parameter
         print("Cheater!!! Or possibly made a typo...")  # new
         print_dice(roll)  # new
     return keepers  # function-level scoping
+=======
+
+        # turn the keepers string into a tuple of ints
+        keepers = tuple(int(num) for num in keepers if num.isnumeric())
+
+        # verify the keepers! are the cheating?
+        cheating = GameLogic.is_cheating(roll, keepers)
+        if not cheating:
+            # let them leave the while loop
+            break
+
+        print("Cheater!!! Or possibly made a typo...")
+        print_dice(roll)
+    return keepers
+>>>>>>> main
 
 
-def do_hot_dice():
-    pass
+def do_zilch():
+    print("****************************************")
+    print("**        Zilch!!! Round over         **")
+    print("****************************************")
 
 
 def do_zilch():  # new
@@ -97,5 +143,11 @@ def do_zilch():  # new
 
 
 if __name__ == "__main__":
+<<<<<<< HEAD
     test = GameLogic([(1,2,3,4,5,6)])
     play(test.mock_roller)
+=======
+    test_straight = GameLogic([(1, 2, 3, 4, 5, 4)])
+    # play(test_straight.mock_roller)
+    play()
+>>>>>>> main

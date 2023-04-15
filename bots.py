@@ -1,7 +1,3 @@
-"""Place in root of Project,
-at same level as pyproject.toml
-"""
-
 from abc import ABC, abstractmethod
 import builtins
 import re
