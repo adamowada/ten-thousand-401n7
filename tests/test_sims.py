@@ -48,7 +48,7 @@ def test_all(monkeypatch, capsys, test_input):
     test_instance = GameLogic(mock_rolls)
     play(test_instance.mock_roller)
 
-    captured = capsys.readouterr().out  # jank
+    captured = capsys.readouterr().out.replace("\n\n", "\n")  # jank
     output_lines = captured.split("\n")
     for i, v in enumerate(lines):
         assert v.strip() == output_lines[i]
