@@ -14,11 +14,19 @@ class GameLogic:
         return rolls
 
     @staticmethod
+    def mock_roller(n):
+        """
+        Fixes the roll of 
+        :param n:
+        :return:
+        """
+
+    @staticmethod
     def is_cheating(roll, keepers):
         """
         Returns True if a user is trying to cheat (or misclicks).
         :param roll: Tuple of integers, representing the dice roll.
-        :param keepers: String of kept dice from the user.
+        :param keepers: Tuple of integers, representing keepers from the user.
         :return: True if cheating, False if not.
         """
         # https://docs.python.org/3/library/collections.html#counter-objects
