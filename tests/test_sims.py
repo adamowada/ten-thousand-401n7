@@ -25,4 +25,5 @@ def test_quitter(monkeypatch, capsys):
     play()
     captured = capsys.readouterr()
     print(captured)
-
+    output_lines = captured.out.strip().split("\n")
+    print(output_lines)
