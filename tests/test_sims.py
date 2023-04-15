@@ -10,7 +10,7 @@ def get_inputs(lines):
     :return: List of inputs to mock.
     """
     inputs = []
-    for line in lines:
+    for line in lines.split("\n"):
         if line.startswith("> "):
             inputs.append(line[2:].strip())  # use slice syntax to remove "> " and "\n" from input
     return inputs
