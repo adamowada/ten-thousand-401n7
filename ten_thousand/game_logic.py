@@ -3,26 +3,15 @@ import random
 
 
 class GameLogic:
-<<<<<<< HEAD
-    def __init__(self, mock_rolls=None):  # new
-=======
     def __init__(self, mock_rolls=None):
->>>>>>> main
         """
         Initialize an instance of the GameLogic class for testing. Accepts optional argument of a list of mock rolls.
         :param mock_rolls: List of tuples, each tuple is a list of integers representing a mocked roll.
         """
-<<<<<<< HEAD
-        self.mock_rolls = mock_rolls  # new
-
-    def mock_roller(self, n):  # new
-        return self.mock_rolls.pop(0)  # new
-=======
-        self.mock_rolls = mock_rolls  # self.mock_rolls = [(1,2,3,4,5,6)]
+        self.mock_rolls = mock_rolls
 
     def mock_roller(self, _):
-        return self.mock_rolls.pop(0) # return (1,2,3,4,5,6)
->>>>>>> main
+        return self.mock_rolls.pop(0)
 
     @staticmethod
     def roll_dice(n):
@@ -35,7 +24,6 @@ class GameLogic:
         return rolls
 
     @staticmethod
-<<<<<<< HEAD
     def is_cheating(roll, keepers):
         """
         Returns True if a user is trying to cheat (or misclicks).
@@ -46,17 +34,6 @@ class GameLogic:
         # https://docs.python.org/3/library/collections.html#counter-objects
         # https://replit.com/@AdamOwada/AngryAnimatedBlogclient#main.py
         return bool(Counter(keepers) - Counter(roll))
-=======
-    def is_cheating(roll, keepers): # (1, 2, 1, 3, 3, 4)  (1, 1, 1)
-        """
-        Returns True if user is cheating!
-        :param roll: Tuple of integers, representing the dice roll
-        :param keepers: Tuple of integers, representing dice the user is keeping
-        :return: Boolean! True if the user is trying to cheat. False if not cheating.
-        """
-        return bool(Counter(keepers) - Counter(roll))
-        pass
->>>>>>> main
 
     @staticmethod
     def calculate_score(roll):
