@@ -27,10 +27,10 @@ def test_quitter(monkeypatch, capsys):
 
     monkeypatch.setattr("builtins.input", mock_input)
     play()
-    captured = capsys.readouterr()
+    captured = capsys.readouterr().out
     print(captured)
     # print()
-    captured  = captured._replace("\n\n", "\n")  # jank
+    captured = captured.replace("\n\n", "\n")  # jank
     output_lines = captured.out.strip().split("\n")
     print(output_lines)
     # print()
