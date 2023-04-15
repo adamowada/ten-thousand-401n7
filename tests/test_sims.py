@@ -12,7 +12,6 @@ def get_inputs(lines):
     inputs = []
     for line in lines:
         if line.startswith("> "):
-            print(line)
             inputs.append(line[2:].strip())  # use slice syntax to remove "> " and "\n" from input
     return inputs
 
@@ -21,7 +20,7 @@ def test_quitter(monkeypatch, capsys):
     with open("tests/quitter.sim.txt", "r") as f:
         lines = f.readlines()
         inputs = get_inputs(lines)
-    print("inputs is:", inputs)
+
     monkeypatch.setattr("builtins.input", lambda _: inputs.pop(0))
     play()
     captured = capsys.readouterr()
