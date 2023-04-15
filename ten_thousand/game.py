@@ -1,4 +1,4 @@
-from game_logic import GameLogic
+from ten_thousand.game_logic import GameLogic
 
 
 def play(roller=GameLogic.roll_dice):  # new param
