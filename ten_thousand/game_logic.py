@@ -3,6 +3,16 @@ import random
 
 
 class GameLogic:
+    def __init__(self, mock_rolls=None):
+        """
+        Initialize an instance of the GameLogic class for testing. Accepts optional argument of a list of mock rolls.
+        :param mock_rolls: List of tuples, each tuple is a list of integers representing a mocked roll.
+        """
+        self.mock_rolls = mock_rolls  # self.mock_rolls = [(1,2,3,4,5,6)]
+
+    def mock_roller(self, _):
+        return self.mock_rolls.pop(0) # return (1,2,3,4,5,6)
+
     @staticmethod
     def roll_dice(n):
         """
@@ -12,6 +22,17 @@ class GameLogic:
         """
         rolls = tuple(random.randint(1, 6) for _ in range(n))
         return rolls
+
+    @staticmethod
+    def is_cheating(roll, keepers): # (1, 2, 1, 3, 3, 4)  (1, 1, 1)
+        """
+        Returns True if user is cheating!
+        :param roll: Tuple of integers, representing the dice roll
+        :param keepers: Tuple of integers, representing dice the user is keeping
+        :return: Boolean! True if the user is trying to cheat. False if not cheating.
+        """
+        return bool(Counter(keepers) - Counter(roll))
+        pass
 
     @staticmethod
     def calculate_score(roll):
@@ -47,3 +68,25 @@ class GameLogic:
         score += 100 if roll[5] == 2 else 0
 
         return score
+
+    @staticmethod
+    def get_scorers(dice):
+        # version_3
+
+        all_dice_score = GameLogic.calculate_score(dice)
+
+        if all_dice_score == 0:
+            return tuple()
+
+        scorers = []
+
+        # for i in range(len(dice)):
+
+        for i, val in enumerate(dice):
+            sub_roll = dice[:i] + dice[i + 1:]
+            sub_score = GameLogic.calculate_score(sub_roll)
+
+            if sub_score != all_dice_score:
+                scorers.append(val)
+
+        return tuple(scorers)

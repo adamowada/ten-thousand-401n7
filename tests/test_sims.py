@@ -27,7 +27,6 @@ def compare_output_and_expected(captured_output, lines):
         assert actual_line.strip() == expected_line.strip()
 
 
-
 @pytest.mark.parametrize(
     "test_input",
     [
