@@ -4,11 +4,6 @@ from ten_thousand.game import play
 
 
 def get_inputs(lines):
-    """
-    Get the sim file's inputs
-    :param lines: List of lines from sim text's .readlines().
-    :return: List of inputs to mock.
-    """
     inputs = []
     for line in lines:
         if line.startswith("> "):
@@ -29,7 +24,7 @@ def test_quitter(monkeypatch, capsys):
     play()
     captured = capsys.readouterr().out.replace("\n\n", "\n")  # jank
     output_lines = captured.split("\n")
-    print(output_lines)
     for i, v in enumerate(lines):
         assert v.strip() == output_lines[i]
+
 
