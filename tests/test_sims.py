@@ -11,11 +11,12 @@ def get_inputs(lines):
     return inputs
 
 
-def get_mock_rolls(lines)
+def get_mock_rolls(lines):
     mock_rolls = []
     for line in lines:
         if line.startswith("*** "):
-            mock_rolls.append(tuple(int(i) for i in line if ))
+            mock_rolls.append(tuple(int(num) for num in line if num.isnumeric()))
+    return mock_rolls
 
 
 @pytest.mark.parametrize(
@@ -35,14 +36,19 @@ def test_all(monkeypatch, capsys, test_input):
     with open(test_input, "r") as f:
         lines = f.readlines()
         inputs = get_inputs(lines)
+        mock_rolls = get_mock_rolls(lines)
 
     def mock_input(prompt):
         print(prompt, inputs[0], sep="")
         return inputs.pop(0)
 
+    # override input()
     monkeypatch.setattr("builtins.input", mock_input)
-    play()
-    captured = capsys.readouterr().out.replace("\n\n", "\n")  # jank
+
+    test_instance = GameLogic(mock_rolls)
+    play(test_instance.mock_roller)
+
+    captured = capsys.readouterr().out  # jank
     output_lines = captured.split("\n")
     for i, v in enumerate(lines):
         assert v.strip() == output_lines[i]
