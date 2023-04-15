@@ -61,13 +61,14 @@ def do_keepers(roll):  # add roll parameter
         keepers = input("Enter dice to keep, or (q)uit:\n> ")
         if keepers == "q":
             return "q"
+        keepers = tuple(int(num) for num in keepers if num.isnumeric())
         # verify the keepers! are the cheating?
         cheating = GameLogic.is_cheating(roll, keepers)  # new
         if not cheating:  # new
             break  # new
         print("Cheater!!! Or possibly made a typo...")  # new
         print_dice(roll)  # new
-    return tuple([int(i) for i in keepers])
+    return keepers  # function-level scoping
 
 
 def do_hot_dice():
