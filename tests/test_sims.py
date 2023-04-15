@@ -21,7 +21,7 @@ def get_mock_rolls(lines):
 
 
 def compare_output_and_expected(captured_output, lines):
-    captured_output = captured_output.replace("\n\n", "\n").split("\n")
+    captured_output = captured_output.split("\n")
 
     for actual_line, expected_line in zip(captured_output, lines):
         assert actual_line.strip() == expected_line.strip()
@@ -31,14 +31,14 @@ def compare_output_and_expected(captured_output, lines):
 @pytest.mark.parametrize(
     "test_input",
     [
-        ("tests/bank_first_for_two_rounds.sim.txt"),
-        ("tests/bank_one_roll_then_quit.sim.txt"),
-        ("tests/cheat_and_fix.sim.txt"),
-        ("tests/hot_dice.sim.txt"),
-        ("tests/one_and_done.sim.txt"),
-        ("tests/quitter.sim.txt"),
-        ("tests/repeat_roller.sim.txt"),
-        ("tests/zilcher.sim.txt"),
+        ("tests/sims/bank_first_for_two_rounds.sim.txt"),
+        ("tests/sims/bank_one_roll_then_quit.sim.txt"),
+        ("tests/sims/cheat_and_fix.sim.txt"),
+        ("tests/sims/hot_dice.sim.txt"),
+        ("tests/sims/one_and_done.sim.txt"),
+        ("tests/sims/quitter.sim.txt"),
+        ("tests/sims/repeat_roller.sim.txt"),
+        ("tests/sims/zilcher.sim.txt"),
     ],
 )
 def test_all(monkeypatch, capsys, test_input):

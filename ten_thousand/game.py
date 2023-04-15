@@ -11,7 +11,8 @@ def play(roller=GameLogic.roll_dice):  # new param
     instance's .mock_roller method.
     :return:
     """
-    print("Welcome to Ten Thousand\n(y)es to play or (n)o to decline\n")
+    print("Welcome to Ten Thousand")
+    print("(y)es to play or (n)o to decline")
     welcome = input("> ")
     if welcome == "n":
         print("OK. Maybe another time")
@@ -25,7 +26,8 @@ def play(roller=GameLogic.roll_dice):  # new param
         if result == "q":
             break  # exits for loop
         total_score += result
-        print(f"You banked {result} points in round {round_number}\nTotal score is {total_score} points")
+        print(f"You banked {result} points in round {round_number}")
+        print(f"Total score is {total_score} points")
     print(f"Thanks for playing. You earned {total_score} points")
 
 
@@ -57,7 +59,9 @@ def do_round(round_number, roller):
 
 
 def do_rbq(unbanked_points, dice_remaining):
-    rbq = input(f"You have {unbanked_points} unbanked points and {dice_remaining} dice remaining\n(r)oll again, (b)ank your points or (q)uit:\n> ")
+    print(f"You have {unbanked_points} unbanked points and {dice_remaining} dice remaining")
+    print("(r)oll again, (b)ank your points or (q)uit:")
+    rbq = input("> ")
     return rbq
 
 
@@ -68,7 +72,8 @@ def print_dice(dice):
 def do_keepers(roll):  # add roll parameter
     """Asks user if they want to keep dice, or quit. Returns choice"""
     while True:  # new
-        keepers = input("Enter dice to keep, or (q)uit:\n> ")
+        print("Enter dice to keep, or (q)uit:")
+        keepers = input("> ")
         if keepers == "q":
             return "q"
         keepers = tuple(int(num) for num in keepers if num.isnumeric())
