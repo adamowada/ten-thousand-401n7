@@ -12,7 +12,7 @@ def get_inputs(lines):
 
 
 def test_quitter(monkeypatch, capsys):
-    with open("quitter.sim.txt", "r") as f:
+    with open("tests/quitter.sim.txt", "r") as f:
         lines = f.readlines()
         inputs = get_inputs(lines)
 
@@ -28,16 +28,16 @@ def test_quitter(monkeypatch, capsys):
         assert v.strip() == output_lines[i]
 
 
-# @pytest.mark.parametrize(
-#     "test_input",
-#     [
-#         ("bank_first_for_two_rounds.sim"),
-#         ("bank_one_roll_then_quit.sim"),
-#         ("cheat_and_fix.sim"),
-#         ("hot_dice.sim"),
-#         ("one_and_done.sim"),
-#         ("quitter.sim"),
-#         ("repeat_roller.sim"),
-#         ("zilcher.sim"),
-#     ]
-# )
+@pytest.mark.parametrize(
+    "test_input",
+    [
+        ("tests/bank_first_for_two_rounds.sim"),
+        ("tests/bank_one_roll_then_quit.sim"),
+        ("tests/cheat_and_fix.sim"),
+        ("tests/hot_dice.sim"),
+        ("tests/one_and_done.sim"),
+        ("tests/quitter.sim"),
+        ("tests/repeat_roller.sim"),
+        ("tests/zilcher.sim"),
+    ],
+)
