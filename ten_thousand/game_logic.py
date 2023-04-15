@@ -24,7 +24,7 @@ class GameLogic:
         # https://docs.python.org/3/library/collections.html#counter-objects
         # https://replit.com/@AdamOwada/AngryAnimatedBlogclient#main.py
         roll = Counter(roll)
-        keepers = Counter()
+        keepers = Counter(tuple(int(num) for num in keepers if num.isnumeric()))
 
 
 

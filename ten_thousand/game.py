@@ -61,6 +61,7 @@ def do_keepers(roll):  # add roll parameter
         keepers = input("Enter dice to keep, or (q)uit:\n> ")
         if keepers == "q":
             return "q"
+        keepers = 
         # verify the keepers! are the cheating?
         cheating = GameLogic.is_cheating(roll, keepers)  # new
         if not cheating:  # new
