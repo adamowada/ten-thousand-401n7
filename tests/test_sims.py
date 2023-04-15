@@ -12,7 +12,8 @@ def get_inputs(lines):
     inputs = []
     for line in lines:
         if line.startswith("> "):
-            inputs.append(line[2:])  # uses s
+            inputs.append(line[2:])  # use slice syntax to remove "> " from input
+    return inputs
 
 
 def test_quitter(monkeypatch, capsys):
