@@ -33,6 +33,8 @@ def do_round(round_number):
         unbanked_points += GameLogic.calculate_score(keepers)
         dice_remaining -= len(keepers)
         # do hot dice!
+        if dice_remaining == 0:  # new
+            dice_remaining = 6  # new
         rbq = do_rbq(unbanked_points, dice_remaining)
         if rbq == "b":
             return unbanked_points
