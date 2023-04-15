@@ -27,3 +27,4 @@ def test_quitter(monkeypatch, capsys):
     print(captured)
     output_lines = captured.out.strip().split("\n")
     print(output_lines)
+    assert len(output_lines) == 4
