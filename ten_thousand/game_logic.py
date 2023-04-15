@@ -22,7 +22,10 @@ class GameLogic:
         :return: True if cheating, False if not.
         """
         # https://docs.python.org/3/library/collections.html#counter-objects
-        
+        # https://replit.com/@AdamOwada/AngryAnimatedBlogclient#main.py
+        roll = Counter(roll)
+        keepers = Counter()
+
 
 
     @staticmethod
