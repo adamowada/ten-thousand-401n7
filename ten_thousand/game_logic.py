@@ -23,7 +23,7 @@ class GameLogic:
         """
         # https://docs.python.org/3/library/collections.html#counter-objects
         # https://replit.com/@AdamOwada/AngryAnimatedBlogclient#main.py
-        return 
+        return bool(Counter(keepers) - Counter(roll))
 
     @staticmethod
     def calculate_score(roll):
