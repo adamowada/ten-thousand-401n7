@@ -62,7 +62,7 @@ def do_keepers(roll):  # add roll parameter
         if keepers == "q":
             return "q"
         # verify the keepers! are the cheating?
-        cheating = GameLogic.verify_keepers(roll, keepers)  # new
+        cheating = GameLogic.is_cheating(roll, keepers)  # new
         if not cheating:  # new
             break  # new
         print("Cheater!!! Or possibly made a typo...")  # new

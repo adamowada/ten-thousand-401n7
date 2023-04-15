@@ -14,12 +14,12 @@ class GameLogic:
         return rolls
 
     @staticmethod
-    def verify_keepers(roll, keepers):
+    def is_cheating(roll, keepers):
         """
-        Returns True if a user is trying to cheat (or miss-clicks).
-        :param roll:
-        :param keepers:
-        :return:
+        Returns True if a user is trying to cheat (or misclicks).
+        :param roll: Tuple of integers, representing the dice roll.
+        :param keepers: String of kept dice from the user.
+        :return: True if cheating, False if not.
         """
 
 
