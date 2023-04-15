@@ -21,6 +21,8 @@ class GameLogic:
         :param keepers: String of kept dice from the user.
         :return: True if cheating, False if not.
         """
+        # https://docs.python.org/3/library/collections.html#counter-objects
+        
 
 
     @staticmethod
