@@ -11,7 +11,8 @@ def play(roller=GameLogic.roll_dice):  # new param
     instance's .mock_roller method.
     :return:
     """
-    welcome = input("Welcome to Ten Thousand\n(y)es to play or (n)o to decline\n> ")
+    print("Welcome to Ten Thousand\n(y)es to play or (n)o to decline\n")
+    welcome = input("> ")
     if welcome == "n":
         print("OK. Maybe another time")
         return
