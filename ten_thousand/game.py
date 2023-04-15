@@ -11,7 +11,7 @@ def play(roller=GameLogic.roll_dice):  # new param
 
     # Do 20 rounds
     for round_number in range(1, 21):
-        result = do_round(round_number)
+        result = do_round(round_number, roller)
         if result == "q":
             break  # exits for loop
         total_score += result
@@ -19,7 +19,7 @@ def play(roller=GameLogic.roll_dice):  # new param
     print(f"Thanks for playing. You earned {total_score} points")
 
 
-def do_round(round_number):
+def do_round(round_number, roller):
     print(f"Starting round {round_number}")
     dice_remaining = 6
     unbanked_points = 0
@@ -31,7 +31,7 @@ def do_round(round_number):
         if GameLogic.calculate_score(roll) == 0:   # new
             do_zilch()  # new
             return 0  # new
-        keepers = do_keepers(roll)  # new add roll argument
+        keepers = do_keepers(roll)  # 3rd new add roll argument
         if keepers == "q":
             return "q"
         unbanked_points += GameLogic.calculate_score(keepers)
