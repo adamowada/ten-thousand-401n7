@@ -11,21 +11,21 @@ def get_inputs(lines):
     return inputs
 
 
-def test_quitter(monkeypatch, capsys):
-    with open("tests/quitter.sim.txt", "r") as f:
-        lines = f.readlines()
-        inputs = get_inputs(lines)
-
-    def mock_input(prompt):
-        print(prompt, inputs[0], sep="")
-        return inputs.pop(0)
-
-    monkeypatch.setattr("builtins.input", mock_input)
-    play()
-    captured = capsys.readouterr().out.replace("\n\n", "\n")  # jank
-    output_lines = captured.split("\n")
-    for i, v in enumerate(lines):
-        assert v.strip() == output_lines[i]
+# def test_quitter(monkeypatch, capsys):
+#     with open("tests/quitter.sim.txt", "r") as f:
+#         lines = f.readlines()
+#         inputs = get_inputs(lines)
+#
+#     def mock_input(prompt):
+#         print(prompt, inputs[0], sep="")
+#         return inputs.pop(0)
+#
+#     monkeypatch.setattr("builtins.input", mock_input)
+#     play()
+#     captured = capsys.readouterr().out.replace("\n\n", "\n")  # jank
+#     output_lines = captured.split("\n")
+#     for i, v in enumerate(lines):
+#         assert v.strip() == output_lines[i]
 
 
 @pytest.mark.parametrize(
@@ -41,5 +41,18 @@ def test_quitter(monkeypatch, capsys):
         ("tests/zilcher.sim"),
     ],
 )
-def test_all(test_input):
-    pass
+def test_all(monkeypatch, capsys, test_input):
+    with open(test_input, "r") as f:
+        lines = f.readlines()
+        inputs = get_inputs(lines)
+
+    def mock_input(prompt):
+        print(prompt, inputs[0], sep="")
+        return inputs.pop(0)
+
+    monkeypatch.setattr("builtins.input", mock_input)
+    play()
+    captured = capsys.readouterr().out.replace("\n\n", "\n")  # jank
+    output_lines = captured.split("\n")
+    for i, v in enumerate(lines):
+        assert v.strip() == output_lines[i]
