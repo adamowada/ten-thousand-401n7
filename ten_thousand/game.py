@@ -1,7 +1,7 @@
 from game_logic import GameLogic
 
 
-def play():
+def play(roller=GameLogic.roll_dice):  # new param
     welcome = input("Welcome to Ten Thousand\n(y)es to play or (n)o to decline\n> ")
     if welcome == "n":
         print("OK. Maybe another time")
@@ -24,7 +24,7 @@ def do_round(round_number):
     dice_remaining = 6
     unbanked_points = 0
     while dice_remaining:
-        roll = GameLogic.roll_dice(dice_remaining)
+        roll = roller(dice_remaining)
         print(f"Rolling {dice_remaining} dice...")
         print_dice(roll)
         # do zilch! # 2nd new

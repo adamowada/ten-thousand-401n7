@@ -14,14 +14,6 @@ class GameLogic:
         return rolls
 
     @staticmethod
-    def mock_roller(n):
-        """
-        Fixes the roll of 
-        :param n:
-        :return:
-        """
-
-    @staticmethod
     def is_cheating(roll, keepers):
         """
         Returns True if a user is trying to cheat (or misclicks).
