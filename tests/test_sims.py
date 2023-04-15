@@ -12,7 +12,7 @@ def get_inputs(lines):
     inputs = []
     for line in lines:
         if line.startswith("> "):
-            
+            inputs.append(line[2:])  # uses s
 
 
 def test_quitter(monkeypatch, capsys):
