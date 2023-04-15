@@ -14,6 +14,16 @@ class GameLogic:
         return rolls
 
     @staticmethod
+    def verify_keepers(roll, keepers):
+        """
+        Returns True if a user is trying to cheat (or miss-clicks).
+        :param roll:
+        :param keepers:
+        :return:
+        """
+
+
+    @staticmethod
     def calculate_score(roll):
         """
         Scores a give roll according to the rules of Ten Thousand.

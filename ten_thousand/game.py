@@ -27,16 +27,16 @@ def do_round(round_number):
         roll = GameLogic.roll_dice(dice_remaining)
         print(f"Rolling {dice_remaining} dice...")
         print_dice(roll)
-        # do zilch! # new
-        if GameLogic.calculate_score(roll) == 0:
-            do_zilch()
-            return 0
-        keepers = do_keepers()
+        # do zilch! # 2nd new
+        if GameLogic.calculate_score(roll) == 0:   # new
+            do_zilch()  # new
+            return 0  # new
+        keepers = do_keepers(roll)  # new add roll argument
         if keepers == "q":
             return "q"
         unbanked_points += GameLogic.calculate_score(keepers)
         dice_remaining -= len(keepers)
-        # do hot dice!
+        # do hot dice! 1st
         if dice_remaining == 0:  # new
             dice_remaining = 6  # new (or could do in function)
         rbq = do_rbq(unbanked_points, dice_remaining)
@@ -55,12 +55,18 @@ def print_dice(dice):
     print(f"*** {' '.join([str(i) for i in dice])} ***")
 
 
-def do_keepers():
+def do_keepers(roll):  # add roll parameter
     """Asks user if they want to keep dice, or quit. Returns choice"""
-    keepers = input("Enter dice to keep, or (q)uit:\n> ")
-    if keepers == "q":
-        return "q"
-    # verify the keepers! are the cheating?
+    while True:  # new
+        keepers = input("Enter dice to keep, or (q)uit:\n> ")
+        if keepers == "q":
+            return "q"
+        # verify the keepers! are the cheating?
+        cheating = GameLogic.verify_keepers(roll, keepers)  # new
+        if not cheating:  # new
+            break  # new
+        print("Cheater!!! Or possibly made a typo...")  # new
+        print_dice(roll)  # new
     return tuple([int(i) for i in keepers])
 
 
@@ -68,10 +74,10 @@ def do_hot_dice():
     pass
 
 
-def do_zilch():
-    print("****************************************")
-    print("**        Zilch!!! Round over         **")
-    print("****************************************")
+def do_zilch():  # new
+    print("****************************************")  # new
+    print("**        Zilch!!! Round over         **")  # new
+    print("****************************************")  # new
 
 
 if __name__ == "__main__":
