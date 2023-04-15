@@ -17,7 +17,7 @@ def get_inputs(lines):
 
 
 def test_quitter(monkeypatch, capsys):
-    with open("./quitter.sim.txt", "r") as f:
+    with open("tests/quitter.sim.txt", "r") as f:
         lines = f.readlines()
         inputs = get_inputs(lines)
 
