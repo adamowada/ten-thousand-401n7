@@ -3,6 +3,16 @@ import random
 
 
 class GameLogic:
+    def __init__(self, mock_rolls=None):  # new
+        """
+        Initialize an instance of the GameLogic class for testing. Accepts optional argument of a list of mock rolls.
+        :param mock_rolls: List of tuples, each tuple is a list of integers representing a mocked roll.
+        """
+        self.mock_rolls = mock_rolls  # new
+
+    def mock_roller(self, n):  # new
+        return self.mock_rolls.pop(0)  # new
+
     @staticmethod
     def roll_dice(n):
         """

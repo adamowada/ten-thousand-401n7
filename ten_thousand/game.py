@@ -2,6 +2,12 @@ from game_logic import GameLogic
 
 
 def play(roller=GameLogic.roll_dice):  # new param
+    """
+    Entry point into Ten Thousand game.
+    :param roller: Default is the normal random roller static method. Optionally pass in reference to GameLogic
+    instance's .mock_roller method.
+    :return:
+    """
     welcome = input("Welcome to Ten Thousand\n(y)es to play or (n)o to decline\n> ")
     if welcome == "n":
         print("OK. Maybe another time")
@@ -82,4 +88,5 @@ def do_zilch():  # new
 
 
 if __name__ == "__main__":
-    play()
+    test = GameLogic([(1,2,3,4,5,6)])
+    play(test.mock_roller)
