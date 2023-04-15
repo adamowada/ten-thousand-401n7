@@ -30,8 +30,9 @@ def test_quitter(monkeypatch, capsys):
     captured = capsys.readouterr()
     print(captured)
     # print()
-    # output_lines = captured.out.strip().split("\n")
-    # print(output_lines)
+    captured  = captured._replace("\n\n", "\n")  # jank
+    output_lines = captured.out.strip().split("\n")
+    print(output_lines)
     # print()
     # print(lines)
     # assert len(output_lines) == len(lines)
