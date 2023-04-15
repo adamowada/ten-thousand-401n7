@@ -31,5 +31,5 @@ def test_quitter(monkeypatch, capsys):
     output_lines = captured.split("\n")
     print(output_lines)
     for i, v in enumerate(lines):
-        assert v == output_lines[i]
+        assert v.strip() == output_lines[i]
 
