@@ -1,4 +1,7 @@
-from ten_thousand.game_logic import GameLogic
+try:
+    from ten_thousand.game_logic import GameLogic
+except:
+    from game_logic import GameLogic
 
 
 def play(roller=GameLogic.roll_dice):  # new param
