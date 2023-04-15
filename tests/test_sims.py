@@ -28,3 +28,4 @@ def test_quitter(monkeypatch, capsys):
     # print(captured)
     # print("co", captured.out)
     # print("raw", lines)
+    assert False
