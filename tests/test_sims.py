@@ -34,6 +34,10 @@ def test_quitter(monkeypatch, capsys):
         ("bank_first_for_two_rounds.sim"),
         ("bank_one_roll_then_quit.sim"),
         ("cheat_and_fix.sim"),
-        ("")
+        ("hot_dice.sim"),
+        ("one_and_done.sim"),
+        ("quitter.sim"),
+        (""),
+        (""),
     ]
 )
