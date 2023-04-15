@@ -27,6 +27,10 @@ def do_round(round_number):
         roll = GameLogic.roll_dice(dice_remaining)
         print(f"Rolling {dice_remaining} dice...")
         print_dice(roll)
+        # do zilch! # new
+        if GameLogic.calculate_score(roll) == 0:
+            do_zilch()
+            return 0
         keepers = do_keepers()
         if keepers == "q":
             return "q"
@@ -34,7 +38,7 @@ def do_round(round_number):
         dice_remaining -= len(keepers)
         # do hot dice!
         if dice_remaining == 0:  # new
-            dice_remaining = 6  # new
+            dice_remaining = 6  # new (or could do in function)
         rbq = do_rbq(unbanked_points, dice_remaining)
         if rbq == "b":
             return unbanked_points
@@ -62,6 +66,12 @@ def do_keepers():
 
 def do_hot_dice():
     pass
+
+
+def do_zilch():
+    print("****************************************")
+    print("**        Zilch!!! Round over         **")
+    print("****************************************")
 
 
 if __name__ == "__main__":
