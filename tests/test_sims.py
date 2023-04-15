@@ -28,7 +28,5 @@ def test_quitter(monkeypatch, capsys):
     monkeypatch.setattr("builtins.input", mock_input)
     play()
     captured = capsys.readouterr()
-    print(captured)
     output_lines = captured.out.strip().split("\n")
-    print(output_lines)
-    assert len(output_lines) == 4
+    assert len(output_lines) == len(lines)
