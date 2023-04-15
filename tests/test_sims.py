@@ -5,7 +5,9 @@ from ten_thousand.game import play
 
 def get_inputs(text):
     """Takes text from a sim file and returns a list of strings, representing inputs"""
-    text = split()
+    text = text.split("\n")
+    for line in text:
+        if line.starts
 
 
 def test_quitter(monkeypatch, capsys):
